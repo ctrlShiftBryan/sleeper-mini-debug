@@ -9,6 +9,7 @@ import {
   BottomSheetModalProvider,
 } from '@gorhom/bottom-sheet';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { GmStoreHooks, useGmActions } from './gm.store';
 
 type OwnProps = {
   context: Types.Context;
@@ -38,6 +39,9 @@ const Mini = (props: OwnProps) => {
   const handleSheetChanges = useCallback((index: number) => {
     console.log('handleSheetChanges', index);
   }, []);
+  const testValue = GmStoreHooks.useTestValue();
+
+  const setTestValue = useGmActions().setTest;
 
   return (
     <ErrorBoundary context={{}}>
@@ -51,11 +55,18 @@ const Mini = (props: OwnProps) => {
             <Sleeper.Text style={styles.text}>
               Hello {context?.user?.display_name}
             </Sleeper.Text>
-
+            <Sleeper.Text style={styles.text}>
+              Test Value: {testValue}
+            </Sleeper.Text>
+            <RN.Button
+              onPress={() => {
+                setTestValue(new Date().toString());
+              }}
+              title="Set Value"
+            />
             <RN.Button
               onPress={handlePresentModalPress}
               title="Present Modal"
-              color="black"
             />
             <BottomSheetModal
               ref={bottomSheetModalRef}

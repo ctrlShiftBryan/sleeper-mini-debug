@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-native/no-inline-styles */
 import * as RN from 'react-native';
 import React, { useCallback, useMemo, useRef } from 'react';
@@ -10,6 +11,8 @@ import {
 } from '@gorhom/bottom-sheet';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { GmStoreHooks, useGmActions } from './gm.store';
+import { useQueryInitMiniData } from './useQuery';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 type OwnProps = {
   context: Types.Context;
@@ -43,46 +46,70 @@ const Mini = (props: OwnProps) => {
 
   const setTestValue = useGmActions().setTest;
 
+  const queryClient = new QueryClient();
+
   return (
     <ErrorBoundary context={{}}>
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <BottomSheetModalProvider>
-          <RN.View style={styles.container}>
-            <Animated.View
-              style={{ width, height: 100, backgroundColor: 'violet' }}
-            />
-            <RN.Button onPress={handlePress} title="Click me" />
-            <Sleeper.Text style={styles.text}>
-              Hello {context?.user?.display_name}
-            </Sleeper.Text>
-            <Sleeper.Text style={styles.text}>
-              Test Value: {testValue}
-            </Sleeper.Text>
-            <RN.Button
-              onPress={() => {
-                setTestValue(new Date().toString());
-              }}
-              title="Set Value"
-            />
-            <RN.Button
-              onPress={handlePresentModalPress}
-              title="Present Modal"
-            />
-            <BottomSheetModal
-              ref={bottomSheetModalRef}
-              index={1}
-              snapPoints={snapPoints}
-              onChange={handleSheetChanges}>
-              <RN.View style={styles.contentContainer}>
-                <RN.Text>Awesome 🎉</RN.Text>
+      <QueryClientProvider client={queryClient}>
+        <GetData context={context}>
+          <GestureHandlerRootView style={{ flex: 1 }}>
+            <BottomSheetModalProvider>
+              <RN.View style={styles.container}>
+                <Animated.View
+                  style={{ width, height: 100, backgroundColor: 'violet' }}
+                />
+                <RN.Button onPress={handlePress} title="Click me" />
+                <Sleeper.Text style={styles.text}>
+                  Hello {context?.user?.display_name}
+                </Sleeper.Text>
+                <Sleeper.Text style={styles.text}>
+                  Test Value: {testValue}
+                </Sleeper.Text>
+                <RN.Button
+                  onPress={() => {
+                    setTestValue(new Date().toString());
+                  }}
+                  title="Set Value"
+                />
+                <RN.Button
+                  onPress={handlePresentModalPress}
+                  title="Present Modal"
+                />
+                <BottomSheetModal
+                  ref={bottomSheetModalRef}
+                  index={1}
+                  snapPoints={snapPoints}
+                  onChange={handleSheetChanges}>
+                  <RN.View style={styles.contentContainer}>
+                    <RN.Text>Awesome 🎉</RN.Text>
+                  </RN.View>
+                </BottomSheetModal>
               </RN.View>
-            </BottomSheetModal>
-          </RN.View>
-        </BottomSheetModalProvider>
-      </GestureHandlerRootView>
+            </BottomSheetModalProvider>
+          </GestureHandlerRootView>
+        </GetData>
+      </QueryClientProvider>
     </ErrorBoundary>
   );
 };
+
+function GetData({
+  children,
+  context,
+}: {
+  children: any;
+  context: Types.Context;
+}) {
+  const initData = useQueryInitMiniData(context?.user, 'ok', 1);
+  return (
+    <>
+      <Sleeper.Text style={styles.text}>
+        Query Status: {initData.status}
+      </Sleeper.Text>
+      {children}
+    </>
+  );
+}
 
 const styles = RN.StyleSheet.create({
   container: {

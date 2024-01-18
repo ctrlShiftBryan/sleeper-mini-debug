@@ -14,6 +14,8 @@ import { GmStoreHooks, useGmActions } from './gm.store';
 import { useQueryInitMiniData } from './useQuery';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
+import { setConfig } from '@ctrlshiftbryan/nerd-types';
+import { NerdButton, NerdText } from '@ctrlshiftbryan/nerd-core-rn';
 type OwnProps = {
   context: Types.Context;
   actions: Types.Actions;
@@ -21,6 +23,12 @@ type OwnProps = {
   events: Types.Events;
 };
 
+setConfig({
+  enablePersist: true,
+  // build: 'c',
+  // gmApiUrl: 'http://192.168.1.177:3333',
+  // gmAppLinkUrl: 'http://192.168.1.177:1234',
+});
 const Mini = (props: OwnProps) => {
   const { context } = props;
   const width = useSharedValue(100);
@@ -58,10 +66,10 @@ const Mini = (props: OwnProps) => {
                 <Animated.View
                   style={{ width, height: 100, backgroundColor: 'violet' }}
                 />
-                <RN.Button onPress={handlePress} title="Click me" />
-                <Sleeper.Text style={styles.text}>
+                <NerdButton onPress={handlePress}>Click Me</NerdButton>
+                <NerdText color="text-core_grey">
                   Hello {context?.user?.display_name}
-                </Sleeper.Text>
+                </NerdText>
                 <Sleeper.Text style={styles.text}>
                   Test Value: {testValue}
                 </Sleeper.Text>

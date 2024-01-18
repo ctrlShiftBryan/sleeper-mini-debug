@@ -1,0 +1,13 @@
+diff --git a/node_modules/@ctrlshiftbryan/nerd-core-rn/build/components/sleeperMini/SleeperMiniApp.js b/node_modules/@ctrlshiftbryan/nerd-core-rn/build/components/sleeperMini/SleeperMiniApp.js
+index 3f6baa3..e3724ed 100644
+--- a/node_modules/@ctrlshiftbryan/nerd-core-rn/build/components/sleeperMini/SleeperMiniApp.js
++++ b/node_modules/@ctrlshiftbryan/nerd-core-rn/build/components/sleeperMini/SleeperMiniApp.js
+@@ -27,7 +27,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
+ };
+ Object.defineProperty(exports, "__esModule", { value: true });
+ const nerd_types_1 = require("@ctrlshiftbryan/nerd-types");
+-const react_query_1 = require("@tanstack/react-query");
++const react_query_1 = require("react-query");
+ const react_1 = __importStar(require("react"));
+ const react_native_1 = require("react-native");
+ const NerdText_1 = __importDefault(require("../nerd/NerdText"));

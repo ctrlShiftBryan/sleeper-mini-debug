@@ -1,3 +1,4 @@
+import { getConfig } from '@ctrlshiftbryan/nerd-types';
 import { useQuery } from 'react-query';
 // import { getConfig } from '../config';
 // import { getOptions } from './getOptions';
@@ -7,11 +8,13 @@ export function useQueryInitMiniData(
   key: string,
   rawChecks: number | undefined,
 ) {
+  const { gmApiUrl } = getConfig();
+
   const url = '/api/gm/init-mini';
   const userId = user?.user_id;
   const checks = rawChecks ?? 0;
   const queryKey = userId ? [url, userId, key, checks] : [url, key, checks];
-  const gmApiUrl = 'https://gm2.dynastynerds.com';
+  // const gmApiUrl = 'https://gm2.dynastynerds.com';
   const fullUrl = `${gmApiUrl}${url}`;
 
   const result = useQuery({

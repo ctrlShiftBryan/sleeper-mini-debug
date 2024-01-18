@@ -14,11 +14,12 @@
   "dependencies": {
     "@babel/plugin-transform-runtime": "7.15.0",
     "@babel/runtime": "7.15.4",
+    "@ctrlshiftbryan/nerd-core-rn": "^2.2.10",
+    "@ctrlshiftbryan/nerd-types": "^2.2.9",
     "@gorhom/bottom-sheet": "^4.4.5",
     "@react-native-async-storage/async-storage": "1.15.15",
     "@shopify/flash-list": "1.4.1",
     "@sleeperhq/mini-core": "1.8.5",
-    "react-query": "4.0.0-alpha.24",
     "he": "1.2.0",
     "match-sorter": "^6.3.1",
     "moment-timezone": "0.5.11",
@@ -28,7 +29,9 @@
     "react-native-reanimated": "3.5.4",
     "react-native-svg": "13.14.0",
     "react-native-webview": "11.23.1",
+    "react-query": "4.0.0-alpha.24",
     "regenerator-runtime": "0.13.11",
+    "tiny-invariant": "1.3.1",
     "zustand": "^4.3.2"
   },
   "devDependencies": {

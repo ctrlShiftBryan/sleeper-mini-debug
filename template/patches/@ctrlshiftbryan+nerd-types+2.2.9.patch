@@ -1,0 +1,52 @@
+diff --git a/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useMutationCheckTrade.js b/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useMutationCheckTrade.js
+index d37d7a4..db97115 100644
+--- a/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useMutationCheckTrade.js
++++ b/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useMutationCheckTrade.js
+@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
+ };
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.useMutationCheckTrade = void 0;
+-const react_query_1 = require("@tanstack/react-query");
++const react_query_1 = require("react-query");
+ const getOptions_1 = require("./getOptions");
+ const config_1 = require("../config");
+ function useMutationCheckTrade() {
+diff --git a/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useMutationRemoveMini.js b/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useMutationRemoveMini.js
+index 85822d3..2c18d21 100644
+--- a/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useMutationRemoveMini.js
++++ b/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useMutationRemoveMini.js
+@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
+ };
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.useMutationRemoveMini = void 0;
+-const react_query_1 = require("@tanstack/react-query");
++const react_query_1 = require("react-query");
+ const getOptions_1 = require("./getOptions");
+ const config_1 = require("../config");
+ function useMutationRemoveMini() {
+diff --git a/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useQueryInitMiniData.js b/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useQueryInitMiniData.js
+index 2cebb07..6e21cf9 100644
+--- a/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useQueryInitMiniData.js
++++ b/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useQueryInitMiniData.js
+@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
+ };
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.useQueryInitMiniData = void 0;
+-const react_query_1 = require("@tanstack/react-query");
++const react_query_1 = require("react-query");
+ const config_1 = require("../config");
+ const getOptions_1 = require("./getOptions");
+ function useQueryInitMiniData(user, key, rawChecks) {
+diff --git a/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useQueryMiniMemberInfo.js b/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useQueryMiniMemberInfo.js
+index 0d76677..b815831 100644
+--- a/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useQueryMiniMemberInfo.js
++++ b/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useQueryMiniMemberInfo.js
+@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
+ };
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.useQueryMiniMemberInfo = void 0;
+-const react_query_1 = require("@tanstack/react-query");
++const react_query_1 = require("react-query");
+ const config_1 = require("../config");
+ const getOptions_1 = require("./getOptions");
+ function useQueryMiniMemberInfo(user, key, recheck) {

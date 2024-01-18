@@ -1,5 +1,6 @@
 /* eslint-disable no-catch-shadow */
 /* eslint-disable react-native/no-inline-styles */
+import { getConfig } from '@ctrlshiftbryan/nerd-types';
 import React from 'react';
 import { Text, View } from 'react-native';
 
@@ -69,11 +70,7 @@ export class ErrorBoundary extends React.Component<
   }
 
   async componentDidCatch(error: Error, info: React.ErrorInfo): Promise<void> {
-    const gmApiUrl = 'https://gm2.dynastynerds.com';
-    const version = '0.0.0';
-    const build = '6';
-
-    // const { gmApiUrl, version, build } = getConfig();
+    const { gmApiUrl, version, build } = getConfig();
     // log error to an error reporting service
     const data = {
       error,

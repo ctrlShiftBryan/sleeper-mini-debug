@@ -1,26 +1,14 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-native/no-inline-styles */
-import * as RN from 'react-native';
-import React, { useCallback, useMemo, useRef } from 'react';
-import { Types, Sleeper, Fonts, Theme } from '@sleeperhq/mini-core';
-import { ErrorBoundary } from '../../components/ErrorBoundary';
-import Animated, { useSharedValue } from 'react-native-reanimated';
-import {
-  BottomSheetModal,
-  BottomSheetModalProvider,
-} from '@gorhom/bottom-sheet';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { GmStoreHooks, useGmActions } from './gm.store';
-import { useQueryInitMiniData } from './useQuery';
-import { QueryClient, QueryClientProvider } from 'react-query';
-
+import { Types } from '@sleeperhq/mini-core';
+import React, { useCallback } from 'react';
+import { SleeperMiniApp } from '@ctrlshiftbryan/nerd-core-rn';
 import { setConfig } from '@ctrlshiftbryan/nerd-types';
-import { NerdButton, NerdText } from '@ctrlshiftbryan/nerd-core-rn';
+import { ErrorBoundary } from '../../components/ErrorBoundary';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+// import { Text, View } from 'react-native';
+
 type OwnProps = {
   context: Types.Context;
-  actions: Types.Actions;
-  entitlements: Types.Entitlements;
-  events: Types.Events;
 };
 
 setConfig({
@@ -29,115 +17,94 @@ setConfig({
   // gmApiUrl: 'http://192.168.1.177:3333',
   // gmAppLinkUrl: 'http://192.168.1.177:1234',
 });
+
+function preload(ids: string[], map: any) {
+  const safeMap = map || {};
+
+  ids.map(id => safeMap[id]);
+}
+
 const Mini = (props: OwnProps) => {
   const { context } = props;
-  const width = useSharedValue(100);
+  const { actions } = context;
+  // events.onBackButtonPressed = () => {
+  //   // Handle the back button press
+  //   // Return 'CONSUMED' if you took control of the action (and want the Sleeper app to do nothing)
+  //   // Return 'PROPAGATE' if you took no action and want the event to continue (the Sleeper app will navigate back to the main mini list)
+  //   return 'CONSUMED';
+  // };
 
-  const handlePress = () => {
-    width.value = width.value + 10;
-  };
+  // const keys = Object.keys(context);
 
-  // ref
-  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
+  const keys2 = [
+    'leaguesMap',
+    'league',
+    'user',
+    'usersInLeagueMap',
+    'rostersInLeagueMap',
+    'draftsInLeagueMap',
+    'draftPickTradesInLeagueMap',
+    'playoffsInLeagueMap',
+    'transactionsMap',
+    'draftPicksInDraftMap',
+    'userLeagueList',
+    'leaguesMap',
+    'userMap',
+    'transactionsInLeagueMap',
+  ];
 
-  // variables
-  const snapPoints = useMemo(() => ['25%', '50%'], []);
+  // todo get all league ids and read all leagues in transactions in leagues
+  const leaguesMap = context.leaguesMap || {};
+  const leagueIds = Object.keys(leaguesMap);
+  const leagues = leagueIds.map(id => leaguesMap[id]);
 
-  // callbacks
-  const handlePresentModalPress = useCallback(() => {
-    bottomSheetModalRef.current?.present();
-  }, []);
-  const handleSheetChanges = useCallback((index: number) => {
-    console.log('handleSheetChanges', index);
-  }, []);
-  const testValue = GmStoreHooks.useTestValue();
+  const activeLeagueIds = leagues.map(l => l.league_id);
+  preload(activeLeagueIds, context.transactionsInLeagueMap);
+  preload(activeLeagueIds, context.rostersInLeagueMap);
+  preload(activeLeagueIds, context.usersInLeagueMap);
+  preload(activeLeagueIds, context.draftsInLeagueMap);
+  preload(activeLeagueIds, context.draftPickTradesInLeagueMap);
 
-  const setTestValue = useGmActions().setTest;
+  const drafts = Object.values(context.draftsInLeagueMap || {}).flatMap(x => x);
+  const draftIds = drafts.map(d => d.draft_id);
+  preload(draftIds, context.draftPicksInDraftMap);
 
-  const queryClient = new QueryClient();
+  const firstLeagueId = context.userLeagueList
+    ? context.userLeagueList[0]
+    : undefined;
+
+  const defaultLeague = firstLeagueId ? leaguesMap[firstLeagueId] : undefined;
+
+  const leagueToUse = context.league || defaultLeague;
+
+  const nonProxy = {};
+  keys2.forEach(key => {
+    const obj = context[key];
+    const keys3 = Object.keys(obj || {});
+    const newObj = {};
+    keys3.forEach(key3 => {
+      const object3 = obj[key3];
+      newObj[key3] = object3;
+    });
+    nonProxy[key] = newObj;
+  });
+
+  (nonProxy as any).league = leagueToUse;
+
+  const openTrade = useCallback(
+    (params: any) => {
+      actions.navigate?.(params.type, params.data);
+    },
+    [actions],
+  );
 
   return (
-    <ErrorBoundary context={{}}>
-      <QueryClientProvider client={queryClient}>
-        <GetData context={context}>
-          <GestureHandlerRootView style={{ flex: 1 }}>
-            <BottomSheetModalProvider>
-              <RN.View style={styles.container}>
-                <Animated.View
-                  style={{ width, height: 100, backgroundColor: 'violet' }}
-                />
-                <NerdButton onPress={handlePress}>Click Me</NerdButton>
-                <NerdText color="text-core_grey">
-                  Hello {context?.user?.display_name}
-                </NerdText>
-                <Sleeper.Text style={styles.text}>
-                  Test Value: {testValue}
-                </Sleeper.Text>
-                <RN.Button
-                  onPress={() => {
-                    setTestValue(new Date().toString());
-                  }}
-                  title="Set Value"
-                />
-                <RN.Button
-                  onPress={handlePresentModalPress}
-                  title="Present Modal"
-                />
-                <BottomSheetModal
-                  ref={bottomSheetModalRef}
-                  index={1}
-                  snapPoints={snapPoints}
-                  onChange={handleSheetChanges}>
-                  <RN.View style={styles.contentContainer}>
-                    <RN.Text>Awesome 🎉</RN.Text>
-                  </RN.View>
-                </BottomSheetModal>
-              </RN.View>
-            </BottomSheetModalProvider>
-          </GestureHandlerRootView>
-        </GetData>
-      </QueryClientProvider>
+    <ErrorBoundary context={nonProxy}>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <SleeperMiniApp context={nonProxy} openTrade={openTrade} />
+      </GestureHandlerRootView>
     </ErrorBoundary>
   );
 };
-
-function GetData({
-  children,
-  context,
-}: {
-  children: any;
-  context: Types.Context;
-}) {
-  const initData = useQueryInitMiniData(context?.user, 'ok', 1);
-  return (
-    <>
-      <Sleeper.Text style={styles.text}>
-        Query Status: {initData.status}
-      </Sleeper.Text>
-      {children}
-    </>
-  );
-}
-
-const styles = RN.StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  contentContainer: {
-    flex: 1,
-    alignItems: 'center',
-  },
-  text: {
-    color: Theme.primaryText,
-    padding: 10,
-    borderColor: 'white',
-    borderWidth: 1,
-    borderRadius: 10,
-    margin: 5,
-    ...Fonts.Styles.Body1,
-  },
-});
 
 export default Mini;

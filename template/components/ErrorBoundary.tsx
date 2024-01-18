@@ -71,7 +71,7 @@ export class ErrorBoundary extends React.Component<
   async componentDidCatch(error: Error, info: React.ErrorInfo): Promise<void> {
     const gmApiUrl = 'https://gm2.dynastynerds.com';
     const version = '0.0.0';
-    const build = '3';
+    const build = '4';
 
     // const { gmApiUrl, version, build } = getConfig();
     // log error to an error reporting service

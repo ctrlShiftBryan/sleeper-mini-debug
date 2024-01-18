@@ -14,8 +14,6 @@
   "dependencies": {
     "@babel/plugin-transform-runtime": "7.15.0",
     "@babel/runtime": "7.15.4",
-    "@ctrlshiftbryan/nerd-core-rn": "^2.2.8",
-    "@ctrlshiftbryan/nerd-types": "^2.2.8",
     "@gorhom/bottom-sheet": "^4.4.5",
     "@react-native-async-storage/async-storage": "1.15.15",
     "@shopify/flash-list": "1.4.1",

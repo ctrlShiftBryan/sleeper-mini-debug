@@ -2,7 +2,6 @@ import React from 'react';
 import * as RN from 'react-native';
 import { Types, Sleeper, Fonts, Theme } from '@sleeperhq/mini-core';
 import { ErrorBoundary } from '../../components/ErrorBoundary';
-import { setConfig } from '@ctrlshiftbryan/nerd-types';
 
 type OwnProps = {
   context: Types.Context;
@@ -10,13 +9,6 @@ type OwnProps = {
   entitlements: Types.Entitlements;
   events: Types.Events;
 };
-
-setConfig({
-  enablePersist: true,
-  build: 'f',
-  // gmApiUrl: 'http://192.168.1.177:3333',
-  // gmAppLinkUrl: 'http://192.168.1.177:1234',
-});
 
 const Mini = (props: OwnProps) => {
   const { context } = props;

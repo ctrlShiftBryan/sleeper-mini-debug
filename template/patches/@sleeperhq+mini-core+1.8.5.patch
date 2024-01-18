@@ -1,18 +1,17 @@
 diff --git a/node_modules/@sleeperhq/mini-core/webpack.config.js b/node_modules/@sleeperhq/mini-core/webpack.config.js
-index 53e4f5b..1c1d519 100644
+index 53e4f5b..b8d18dc 100644
 --- a/node_modules/@sleeperhq/mini-core/webpack.config.js
 +++ b/node_modules/@sleeperhq/mini-core/webpack.config.js
-@@ -179,6 +179,9 @@ module.exports = env => {
+@@ -179,6 +179,8 @@ module.exports = env => {
              /node_modules(.*[/\\])+abort-controller/,
              /node_modules(.*[/\\])+@callstack\/repack/,
              /node_modules(.*[/\\])+@sleeperhq\/mini-core/,
 +            /node_modules(.*[/\\])+@gorhom\/bottom-sheet/,
 +            /node_modules(.*[/\\])+@gorhom\/portal/,
-+            /node_modules(.*[/\\])+@ctrlshiftbryan\/nerd-core-rn/,
            ],
            use: {
              loader: 'babel-loader',
-@@ -187,6 +190,7 @@ module.exports = env => {
+@@ -187,6 +189,7 @@ module.exports = env => {
                  'module:metro-react-native-babel-preset',
                  ['@babel/preset-typescript', { allowDeclareFields: true }],
                ],
@@ -20,7 +19,7 @@ index 53e4f5b..1c1d519 100644
                babelrc: false,
                cacheDirectory: true,
              },
-@@ -212,8 +216,8 @@ module.exports = env => {
+@@ -212,8 +215,8 @@ module.exports = env => {
                /** Add React Refresh transform only when HMR is enabled. */
                plugins:
                  devServer && devServer.hmr

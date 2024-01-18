@@ -4,8 +4,6 @@
   Please do not edit manually.
 */
 
-import '@ctrlshiftbryan/nerd-core-rn';
-import '@ctrlshiftbryan/nerd-types';
 import '@gorhom/bottom-sheet';
 import '@react-native-async-storage/async-storage';
 import '@shopify/flash-list';

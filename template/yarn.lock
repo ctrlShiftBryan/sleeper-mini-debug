@@ -1181,15 +1181,11 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@ctrlshiftbryan/nerd-core-rn@^2.2.17":
+"@ctrlshiftbryan/nerd-core-rn@file:.yalc/@ctrlshiftbryan/nerd-core-rn":
   version "2.2.17"
-  resolved "https://npm.pkg.github.com/download/@ctrlshiftbryan/nerd-core-rn/2.2.17/068d1436c062511c9410d4768426bb29fd0f86df#068d1436c062511c9410d4768426bb29fd0f86df"
-  integrity sha512-uAgfoYODuJ8k9ZdPY/gKkgoYe7uGFkhOpUo+SggDo51iSiaRwvwTno0mFiPNN3QVN/MXHdvJxTHHvXt5gNahQw==
 
-"@ctrlshiftbryan/nerd-types@^2.2.17":
+"@ctrlshiftbryan/nerd-types@file:.yalc/@ctrlshiftbryan/nerd-types":
   version "2.2.17"
-  resolved "https://npm.pkg.github.com/download/@ctrlshiftbryan/nerd-types/2.2.17/aa548f8e437763fa69024ad2e44dd46ef93b1bc0#aa548f8e437763fa69024ad2e44dd46ef93b1bc0"
-  integrity sha512-84e0U3l5vlf60j9rthfG5LiuhgJ6m530KfLAiMOl4jtJPWoGQDl22Wxyywvna2KzMyIEuEWHfo1wCG/5teh2Fg==
 
 "@discoveryjs/json-ext@^0.5.7":
   version "0.5.7"

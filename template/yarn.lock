@@ -1181,15 +1181,15 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@ctrlshiftbryan/nerd-core-rn@^2.2.10":
-  version "2.2.10"
-  resolved "https://npm.pkg.github.com/download/@ctrlshiftbryan/nerd-core-rn/2.2.10/1d6ff8fe6873680ba6a00f87d12ea6962bcf8932#1d6ff8fe6873680ba6a00f87d12ea6962bcf8932"
-  integrity sha512-1HqZgs1olFeLVNd6MmnhM4siDt4m1YsXZu/5mERA9psuZOQDfU+pjUP3Y5D5wW5q1Iy8bHPKAYZMBiWd77TfmQ==
+"@ctrlshiftbryan/nerd-core-rn@^2.2.11":
+  version "2.2.11"
+  resolved "https://npm.pkg.github.com/download/@ctrlshiftbryan/nerd-core-rn/2.2.11/f7ffb8681406ebe2587956aaf449bba7ebc58415#f7ffb8681406ebe2587956aaf449bba7ebc58415"
+  integrity sha512-D/E+dQ4BKa0K2At1AFwjLenKs+aBPuaxIB/TJgi5qs/xwfplfg708HTlukCTxACi9xvyU2HZKXHfaIOk+5FFlQ==
 
-"@ctrlshiftbryan/nerd-types@^2.2.9":
-  version "2.2.9"
-  resolved "https://npm.pkg.github.com/download/@ctrlshiftbryan/nerd-types/2.2.9/1c873a9d1a5c01ec5d9169723ef38937cfc029ba#1c873a9d1a5c01ec5d9169723ef38937cfc029ba"
-  integrity sha512-gM9rbTbE9SRnockw4H1/Nal3JbeXu9IcBRX1nL1/Fw7mw3v9OmBP7mfTpb03NgPR/VMuvi38t1YPbS7MMCpnHQ==
+"@ctrlshiftbryan/nerd-types@^2.2.11":
+  version "2.2.11"
+  resolved "https://npm.pkg.github.com/download/@ctrlshiftbryan/nerd-types/2.2.11/bad0aa722e3319fac01dba00de7a995d00b49c83#bad0aa722e3319fac01dba00de7a995d00b49c83"
+  integrity sha512-iGaj9IQXbnmmInlK0LmsOc/ViU65nkZuaqT0R+NCNcndKIXv6cZL5GH0W4Yc0gDnflNSwcV6iSfR12oyN2u93Q==
 
 "@discoveryjs/json-ext@^0.5.7":
   version "0.5.7"

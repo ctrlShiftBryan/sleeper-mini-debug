@@ -1,6 +1,6 @@
 {
-  "name": "template",
-  "displayName": "template",
+  "name": "testing",
+  "displayName": "testing",
   "remoteIP": "192.168.1.132",
   "samples": [
     "Mini",
@@ -12,6 +12,6 @@
   ],
   "selectedSample": 0,
   "headerOptions": {
-    "useLeagueSelector": false
+    "useLeagueSelector": true
   }
 }

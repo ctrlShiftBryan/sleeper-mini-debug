@@ -1,5 +1,5 @@
 {
-  "name": "template",
+  "name": "testing",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -14,8 +14,8 @@
   "dependencies": {
     "@babel/plugin-transform-runtime": "7.15.0",
     "@babel/runtime": "7.15.4",
-    "@ctrlshiftbryan/nerd-core-rn": "^2.2.11",
-    "@ctrlshiftbryan/nerd-types": "^2.2.11",
+    "@ctrlshiftbryan/nerd-core-rn": "^2.2.17",
+    "@ctrlshiftbryan/nerd-types": "^2.2.17",
     "@gorhom/bottom-sheet": "^4.4.5",
     "@react-native-async-storage/async-storage": "1.15.15",
     "@shopify/flash-list": "1.4.1",

@@ -2,12 +2,12 @@
   "version": "v1",
   "packages": {
     "@ctrlshiftbryan/nerd-core-rn": {
-      "signature": "b4f9650a1f120c3d20db67e802ff10a5",
+      "signature": "acb4d00d35e176c7cac5d14fef2b76b0",
       "file": true,
       "replaced": "^2.2.17"
     },
     "@ctrlshiftbryan/nerd-types": {
-      "signature": "1388ab8f1446d3697db902016fc8c8a5",
+      "signature": "5e93e0ff0adc40ad332c569d43d2960a",
       "file": true,
       "replaced": "^2.2.17"
     }

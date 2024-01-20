@@ -13,10 +13,11 @@ type OwnProps = {
 
 setConfig({
   enablePersist: true,
-  build: 'y14',
-  // gmApiUrl: 'http://192.168.1.177:3333',
-  // gmAppLinkUrl: 'http://192.168.1.177:1234',
+  build: '.a2',
 });
+
+// gmApiUrl: 'http://192.168.1.177:3333',
+// gmAppLinkUrl: 'http://192.168.1.177:1234',
 
 function preload(ids: string[], map: any) {
   const safeMap = map || {};

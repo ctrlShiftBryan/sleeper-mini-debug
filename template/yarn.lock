@@ -1182,10 +1182,10 @@
     minimist "^1.2.0"
 
 "@ctrlshiftbryan/nerd-core-rn@file:.yalc/@ctrlshiftbryan/nerd-core-rn":
-  version "2.2.20"
+  version "2.2.8"
 
 "@ctrlshiftbryan/nerd-types@file:.yalc/@ctrlshiftbryan/nerd-types":
-  version "2.2.20"
+  version "2.2.8"
   dependencies:
     "@prisma/client" "^4.9.0"
     "@prisma/instrumentation" "^4.9.0"

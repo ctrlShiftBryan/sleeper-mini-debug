@@ -13,7 +13,7 @@ type OwnProps = {
 
 setConfig({
   enablePersist: true,
-  build: '.a10',
+  build: '.a12',
 });
 
 // gmApiUrl: 'http://192.168.1.177:3333',

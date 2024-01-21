@@ -1181,11 +1181,15 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@ctrlshiftbryan/nerd-core-rn@file:.yalc/@ctrlshiftbryan/nerd-core-rn":
-  version "2.2.8"
+"@ctrlshiftbryan/nerd-core-rn@2.2.26":
+  version "2.2.26"
+  resolved "https://npm.pkg.github.com/download/@ctrlshiftbryan/nerd-core-rn/2.2.26/aea37b49143e0604452235603cb8a94780da38e7#aea37b49143e0604452235603cb8a94780da38e7"
+  integrity sha512-zbe9q0mOZ1GN6nDX/F8+GshlcPZphrkEP+ggD6pa1FdtcpI9yrgMYsVqNAOmEOe6dHnzTPg8vjxPgl0OXB/h+A==
 
-"@ctrlshiftbryan/nerd-types@file:.yalc/@ctrlshiftbryan/nerd-types":
-  version "2.2.8"
+"@ctrlshiftbryan/nerd-types@2.2.26":
+  version "2.2.26"
+  resolved "https://npm.pkg.github.com/download/@ctrlshiftbryan/nerd-types/2.2.26/fd4f39af16f8c8e21aee5b003e9bc215d5ab5c11#fd4f39af16f8c8e21aee5b003e9bc215d5ab5c11"
+  integrity sha512-vo6C4usn2NBj2jtxtfhuF9E10ZBx6j/5TIM7PAAgYvreK1r6HvHYlFTU9Vgj9YHZszllsOur8hLSrD7Z9OUFzQ==
   dependencies:
     "@prisma/client" "^4.9.0"
     "@prisma/instrumentation" "^4.9.0"

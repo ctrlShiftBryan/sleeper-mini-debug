@@ -50,3 +50,32 @@ index 0d76677..f0511d2 100644
  const config_1 = require("../config");
  const getOptions_1 = require("./getOptions");
  function useQueryMiniMemberInfo(user, key, recheck) {
+diff --git a/node_modules/@ctrlshiftbryan/nerd-types/plop-templates/action.hbs b/node_modules/@ctrlshiftbryan/nerd-types/plop-templates/action.hbs
+deleted file mode 100644
+index 624223d..0000000
+--- a/node_modules/@ctrlshiftbryan/nerd-types/plop-templates/action.hbs
++++ /dev/null
+@@ -1,5 +0,0 @@
+-import { GmState } from '../../../types2';
+-
+-export function {{name}}Action(state: GmState) : GmState {
+-  return state;
+-}
+diff --git a/node_modules/@ctrlshiftbryan/nerd-types/plop-templates/action.test.hbs b/node_modules/@ctrlshiftbryan/nerd-types/plop-templates/action.test.hbs
+deleted file mode 100644
+index b54a718..0000000
+--- a/node_modules/@ctrlshiftbryan/nerd-types/plop-templates/action.test.hbs
++++ /dev/null
+@@ -1,12 +0,0 @@
+-import { describe, expect, it } from 'vitest';
+-import defauleGmState from '../../../../../../stubs/zustand/working-value-type-gm-state.json';
+-import { GmState } from '../../../types2';
+-import { {{name}}Action } from './{{name}}Action';
+-
+-const gmState: GmState = defauleGmState as any;
+-
+-describe('{{name}}Action', () => {
+-  it('', () => {
+-    const result = {{name}}Action(gmState);
+-  });
+-});

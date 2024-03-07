@@ -1,0 +1,45 @@
+diff --git a/node_modules/@sleeperhq/mini-core/bin/build_mini.js b/node_modules/@sleeperhq/mini-core/bin/build_mini.js
+index 410f666..c5f9dd8 100755
+--- a/node_modules/@sleeperhq/mini-core/bin/build_mini.js
++++ b/node_modules/@sleeperhq/mini-core/bin/build_mini.js
+@@ -46,7 +46,7 @@ const getCommands = (projectName) => {
+     --reset-cache \
+     --bundle-output "${bundleOutputPath[platform]}" \
+     --sourcemap-output "${sourcemapOutputPath[platform]}" \
+-    --minify true \
++    --minify false \
+     --assets-dest "${assetsDestPath[platform]}" \
+     --webpackConfig ./node_modules/@sleeperhq/mini-core/webpack.config.js`;
+   };
+diff --git a/node_modules/@sleeperhq/mini-core/webpack.config.js b/node_modules/@sleeperhq/mini-core/webpack.config.js
+index 53e4f5b..b8d18dc 100644
+--- a/node_modules/@sleeperhq/mini-core/webpack.config.js
++++ b/node_modules/@sleeperhq/mini-core/webpack.config.js
+@@ -179,6 +179,8 @@ module.exports = env => {
+             /node_modules(.*[/\\])+abort-controller/,
+             /node_modules(.*[/\\])+@callstack\/repack/,
+             /node_modules(.*[/\\])+@sleeperhq\/mini-core/,
++            /node_modules(.*[/\\])+@gorhom\/bottom-sheet/,
++            /node_modules(.*[/\\])+@gorhom\/portal/,
+           ],
+           use: {
+             loader: 'babel-loader',
+@@ -187,6 +189,7 @@ module.exports = env => {
+                 'module:metro-react-native-babel-preset',
+                 ['@babel/preset-typescript', { allowDeclareFields: true }],
+               ],
++              plugins: ['react-native-reanimated/plugin'],
+               babelrc: false,
+               cacheDirectory: true,
+             },
+@@ -212,8 +215,8 @@ module.exports = env => {
+               /** Add React Refresh transform only when HMR is enabled. */
+               plugins:
+                 devServer && devServer.hmr
+-                  ? ['@babel/plugin-transform-runtime', 'module:react-refresh/babel']
+-                  : ['@babel/plugin-transform-runtime'],
++                  ? ['@babel/plugin-transform-runtime', 'module:react-refresh/babel', 'react-native-reanimated/plugin']
++                  : ['@babel/plugin-transform-runtime', 'react-native-reanimated/plugin'],
+               babelrc: false,
+               comments: true, // necessary for named chunks
+               cacheDirectory: true,

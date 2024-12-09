@@ -1,0 +1,81 @@
+diff --git a/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useMutationCheckTrade.js b/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useMutationCheckTrade.js
+index d37d7a4..bdc72f1 100644
+--- a/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useMutationCheckTrade.js
++++ b/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useMutationCheckTrade.js
+@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
+ };
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.useMutationCheckTrade = void 0;
+-const react_query_1 = require("@tanstack/react-query");
++const react_query_1 = require("react-query");
+ const getOptions_1 = require("./getOptions");
+ const config_1 = require("../config");
+ function useMutationCheckTrade() {
+diff --git a/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useMutationRemoveMini.js b/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useMutationRemoveMini.js
+index 85822d3..cad7cc2 100644
+--- a/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useMutationRemoveMini.js
++++ b/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useMutationRemoveMini.js
+@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
+ };
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.useMutationRemoveMini = void 0;
+-const react_query_1 = require("@tanstack/react-query");
++const react_query_1 = require("react-query");
+ const getOptions_1 = require("./getOptions");
+ const config_1 = require("../config");
+ function useMutationRemoveMini() {
+diff --git a/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useQueryInitMiniData.js b/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useQueryInitMiniData.js
+index 2cebb07..99eca36 100644
+--- a/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useQueryInitMiniData.js
++++ b/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useQueryInitMiniData.js
+@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
+ };
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.useQueryInitMiniData = void 0;
+-const react_query_1 = require("@tanstack/react-query");
++const react_query_1 = require("react-query");
+ const config_1 = require("../config");
+ const getOptions_1 = require("./getOptions");
+ function useQueryInitMiniData(user, key, rawChecks) {
+diff --git a/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useQueryMiniMemberInfo.js b/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useQueryMiniMemberInfo.js
+index 0d76677..f0511d2 100644
+--- a/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useQueryMiniMemberInfo.js
++++ b/node_modules/@ctrlshiftbryan/nerd-types/build/react-query/useQueryMiniMemberInfo.js
+@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
+ };
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.useQueryMiniMemberInfo = void 0;
+-const react_query_1 = require("@tanstack/react-query");
++const react_query_1 = require("react-query");
+ const config_1 = require("../config");
+ const getOptions_1 = require("./getOptions");
+ function useQueryMiniMemberInfo(user, key, recheck) {
+diff --git a/node_modules/@ctrlshiftbryan/nerd-types/plop-templates/action.hbs b/node_modules/@ctrlshiftbryan/nerd-types/plop-templates/action.hbs
+deleted file mode 100644
+index 624223d..0000000
+--- a/node_modules/@ctrlshiftbryan/nerd-types/plop-templates/action.hbs
++++ /dev/null
+@@ -1,5 +0,0 @@
+-import { GmState } from '../../../types2';
+-
+-export function {{name}}Action(state: GmState) : GmState {
+-  return state;
+-}
+diff --git a/node_modules/@ctrlshiftbryan/nerd-types/plop-templates/action.test.hbs b/node_modules/@ctrlshiftbryan/nerd-types/plop-templates/action.test.hbs
+deleted file mode 100644
+index b54a718..0000000
+--- a/node_modules/@ctrlshiftbryan/nerd-types/plop-templates/action.test.hbs
++++ /dev/null
+@@ -1,12 +0,0 @@
+-import { describe, expect, it } from 'vitest';
+-import defauleGmState from '../../../../../../stubs/zustand/working-value-type-gm-state.json';
+-import { GmState } from '../../../types2';
+-import { {{name}}Action } from './{{name}}Action';
+-
+-const gmState: GmState = defauleGmState as any;
+-
+-describe('{{name}}Action', () => {
+-  it('', () => {
+-    const result = {{name}}Action(gmState);
+-  });
+-});

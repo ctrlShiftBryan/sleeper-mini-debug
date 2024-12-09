@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "packages": {
+    "@ctrlshiftbryan/nerd-core-rn": {
+      "signature": "fa4e5ce2580bb41d8eaa6be61567f16c",
+      "file": true,
+      "replaced": "2.2.26"
+    },
+    "@ctrlshiftbryan/nerd-types": {
+      "signature": "6cf365334d5319dc4c7c2e1b8717f3b1",
+      "file": true,
+      "replaced": "2.2.26"
+    }
+  }
+}

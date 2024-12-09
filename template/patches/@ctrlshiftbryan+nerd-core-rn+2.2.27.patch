@@ -1,0 +1,273 @@
+diff --git a/node_modules/@ctrlshiftbryan/nerd-core-rn/build/components/gmAnalyzer/AnalyzerGraph.js b/node_modules/@ctrlshiftbryan/nerd-core-rn/build/components/gmAnalyzer/AnalyzerGraph.js
+index 4f47033..bb1a636 100644
+--- a/node_modules/@ctrlshiftbryan/nerd-core-rn/build/components/gmAnalyzer/AnalyzerGraph.js
++++ b/node_modules/@ctrlshiftbryan/nerd-core-rn/build/components/gmAnalyzer/AnalyzerGraph.js
+@@ -38,7 +38,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
+ const nerd_types_1 = require("@ctrlshiftbryan/nerd-types");
+ const react_1 = __importStar(require("react"));
+ const react_native_1 = require("react-native");
+-const react_native_reanimated_1 = __importStar(require("react-native-reanimated"));
++// import Animated, { runOnUI, useAnimatedStyle, useSharedValue, withRepeat, withSequence, withSpring, withTiming } from 'react-native-reanimated';
+ const IconRefresh_1 = __importDefault(require("../svg/IconRefresh"));
+ const IconX_1 = __importDefault(require("../svg/IconX"));
+ const NerdButton_1 = __importDefault(require("../nerd/NerdButton"));
+@@ -77,20 +77,19 @@ function PositionTotalHeight(position, map, minimumHeight) {
+     return minimumHeight;
+ }
+ function RefreshLeague({ focusTeamId, onBackPress, setShowRefresh, league, isLoading, allowRefresh }) {
+-    const rotation = (0, react_native_reanimated_1.useSharedValue)(0);
+-    const animatedStyle = (0, react_native_reanimated_1.useAnimatedStyle)(() => ({
+-        transform: [{ rotateZ: `${rotation.value}deg` }],
+-    }));
++    // const rotation = useSharedValue(0);
++    // const animatedStyle = useAnimatedStyle(() => ({
++    //   transform: [{ rotateZ: `${rotation.value}deg` } as any],
++    // } as any) as any);
+     const refreshing = nerd_types_1.GmStoreHooks.useRefreshing();
+-    const includesRefreshing = refreshing.includes(league.id) || isLoading;
+-    (0, react_1.useEffect)(() => {
+-        if (includesRefreshing) {
+-            rotation.value = (0, react_native_reanimated_1.withRepeat)((0, react_native_reanimated_1.withTiming)(360, { duration: 1000 }), -1);
+-        }
+-        else {
+-            rotation.value = 0;
+-        }
+-    }, [includesRefreshing]);
++    // const includesRefreshing = refreshing.includes(league.id) || isLoading;
++    // useEffect(() => {
++    //   if (includesRefreshing) {
++    //     rotation.value = withRepeat(withTiming(360, { duration: 1000 }), -1);
++    //   } else {
++    //     rotation.value = 0;
++    //   }
++    // }, [includesRefreshing]);
+     return (react_1.default.createElement(react_native_1.View, { style: [(0, styles_1.getStyles)('z-10'), { position: 'absolute', right: 0, top: 0 }] }, focusTeamId !== null
+         ? (react_1.default.createElement(react_native_1.View, { style: (0, styles_1.getStyles)('flex flex-row justify-end') },
+             react_1.default.createElement(react_native_1.TouchableOpacity, { onPress: onBackPress },
+@@ -98,8 +97,7 @@ function RefreshLeague({ focusTeamId, onBackPress, setShowRefresh, league, isLoa
+         : (allowRefresh
+             ? (react_1.default.createElement(react_native_1.View, { style: (0, styles_1.getStyles)('flex flex-row justify-end') },
+                 react_1.default.createElement(react_native_1.TouchableOpacity, { onPress: () => { setShowRefresh(true); } },
+-                    react_1.default.createElement(react_native_reanimated_1.default.View, { style: animatedStyle },
+-                        react_1.default.createElement(IconRefresh_1.default, { color: "grey", width: 20 }))))) : null)));
++                    react_1.default.createElement(IconRefresh_1.default, { color: "grey", width: 20 })))) : null)));
+ }
+ function AnalyzerGraph({ analyzerPositions, animate, disableAninmations, focusTeamId, focusTeamIndex, league, onBackPress, positionFocus, useMutationRefreshLeague, windowTeams, }) {
+     var _a;
+@@ -152,23 +150,43 @@ function AnalyzerGraph({ analyzerPositions, animate, disableAninmations, focusTe
+ }
+ exports.default = AnalyzerGraph;
+ function GraphSection({ height, positionColor, onPress, index, animate, disableAninmations }) {
+-    const animatedHeight = (0, react_native_reanimated_1.useSharedValue)(0);
+-    const reanimatedStyle = (0, react_native_reanimated_1.useAnimatedStyle)(() => {
+-        return {
+-            height: `${animate ? animatedHeight.value : height}%`,
+-        };
+-    }, []);
+-    (0, react_1.useEffect)(() => {
+-        animatedHeight.value = (0, react_native_reanimated_1.withSequence)((0, react_native_reanimated_1.withTiming)(0, { duration: 100 }), (0, react_native_reanimated_1.withTiming)(0, { duration: index * 25 }), (0, react_native_reanimated_1.withSpring)(height, { stiffness: 75 }));
+-    }, [animatedHeight, height, animate]);
+-    if (disableAninmations) {
+-        return (react_1.default.createElement(react_native_1.View, { style: { bottom: 0, left: 0, right: 0, position: 'absolute', height: `${height}%` } },
+-            react_1.default.createElement(react_native_1.TouchableOpacity, { onPress: onPress, style: (0, styles_1.getStyles)('w-full h-full') },
+-                react_1.default.createElement(react_native_1.View, { style: (0, styles_1.getStyles)(`rounded-t-lg w-full h-full ${positionColor} absolute`) }))));
+-    }
+-    return (react_1.default.createElement(react_native_reanimated_1.default.View, { style: [{ bottom: 0, left: 0, right: 0, position: 'absolute', height: `${height}%` }, reanimatedStyle] },
++    // const animatedHeight = useSharedValue(0);
++    // const reanimatedStyle = useAnimatedStyle(() => {
++    //   return {
++    //     height: `${animate ? animatedHeight.value : height}%`,
++    //   };
++    // }, []);
++    // useEffect(() => {
++    //   runOnUI(() => {
++    //     'worklet';
++    //     animatedHeight.value = withSequence(
++    //       withTiming(0, { duration: 100 }),
++    //       withTiming(0, { duration: index * 25 }),
++    //       withSpring(height, { stiffness: 75 }),
++    //     );
++    //   })();
++    // }, [animatedHeight, height, animate, index]);
++    // useEffect(() => {
++    //   animatedHeight.value = withSequence(
++    //     withTiming(0, { duration: 100 }),
++    //     withTiming(0, { duration: index * 25 }),
++    //     withSpring(height, { stiffness: 75 }),
++    //   );
++    // }, [animatedHeight, height, animate]);
++    // if (disableAninmations) {
++    //   return (
++    return (react_1.default.createElement(react_native_1.View, { style: { bottom: 0, left: 0, right: 0, position: 'absolute', height: `${height}%` } },
+         react_1.default.createElement(react_native_1.TouchableOpacity, { onPress: onPress, style: (0, styles_1.getStyles)('w-full h-full') },
+             react_1.default.createElement(react_native_1.View, { style: (0, styles_1.getStyles)(`rounded-t-lg w-full h-full ${positionColor} absolute`) }))));
++    //   );
++    // }
++    // return (
++    //   <Animated.View style={[{ bottom: 0, left: 0, right: 0, position: 'absolute', height: `${height}%` }, reanimatedStyle]}>
++    //     <TouchableOpacity onPress={onPress} style={getStyles('w-full h-full')}>
++    //       <View style={getStyles(`rounded-t-lg w-full h-full ${positionColor} absolute`)} />
++    //     </TouchableOpacity>
++    //   </Animated.View>
++    // );
+ }
+ function RefreshPrompt({ message, onClickNo, onClickYes, updated }) {
+     return (react_1.default.createElement(react_native_1.View, { style: (0, styles_1.getStyles)('absolute p-3 bg-white border rounded-lg shadow-lg left-3 right-3 top-3 border-lightest_grey') },
+diff --git a/node_modules/@ctrlshiftbryan/nerd-core-rn/build/components/gmAnalyzer/AnalyzerList.js b/node_modules/@ctrlshiftbryan/nerd-core-rn/build/components/gmAnalyzer/AnalyzerList.js
+index 5561e5b..877caf3 100644
+--- a/node_modules/@ctrlshiftbryan/nerd-core-rn/build/components/gmAnalyzer/AnalyzerList.js
++++ b/node_modules/@ctrlshiftbryan/nerd-core-rn/build/components/gmAnalyzer/AnalyzerList.js
+@@ -5,48 +5,51 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
+ Object.defineProperty(exports, "__esModule", { value: true });
+ const react_1 = __importDefault(require("react"));
+ const react_native_1 = require("react-native");
+-const react_native_gesture_handler_1 = require("react-native-gesture-handler");
+-const react_native_reanimated_1 = require("react-native-reanimated");
++// import { Gesture, GestureDetector } from 'react-native-gesture-handler';
++// import { runOnJS, useSharedValue } from 'react-native-reanimated';
+ const styles_1 = require("../styles");
+ const AnalyzerLeagueList_1 = __importDefault(require("./AnalyzerLeagueList"));
+ const AnalyzerTeamList_1 = __importDefault(require("./AnalyzerTeamList"));
+ function AnalyzerList({ league, teams, focusTeamIndex, positionFocus, direction, handleTeamPress, focusPlayerId, handleSwipe, useOpenPlayerModal }) {
+     const windowWidth = react_native_1.Dimensions.get('window').width;
+-    const offset = (0, react_native_reanimated_1.useSharedValue)(0);
+-    const start = (0, react_native_reanimated_1.useSharedValue)(0);
++    // const offset = useSharedValue(0);
++    // const start = useSharedValue(0);
+     if (focusTeamIndex === null) {
+         return (react_1.default.createElement(react_native_1.View, { style: (0, styles_1.getStyles)('flex-1 w-full h-full mt-3') },
+             react_1.default.createElement(AnalyzerLeagueList_1.default, { teams: teams, onPress: handleTeamPress, league: league, windowWidth: windowWidth })));
+     }
+-    const item = teams[focusTeamIndex];
+-    const dragGesture = react_native_gesture_handler_1.Gesture.Pan()
+-        .onStart((e) => {
+-        start.value = e.x;
+-    })
+-        .onUpdate((e) => {
+-        offset.value = e.x;
+-    })
+-        .onEnd(() => {
+-        // no swipe
+-        if (start.value === offset.value) {
+-            return;
+-        }
+-        // determine direction
+-        const moveRight = start.value - offset.value < 0;
+-        if (moveRight) {
+-            (0, react_native_reanimated_1.runOnJS)(handleSwipe)('left');
+-        }
+-        else {
+-            (0, react_native_reanimated_1.runOnJS)(handleSwipe)('right');
+-        }
+-        offset.value = 0;
+-    });
++    // const item = teams[focusTeamIndex];
++    // problem?
++    // const dragGesture = Gesture.Pan()
++    //   .onStart((e) => {
++    //     start.value = e.x;
++    //   })
++    //   .onUpdate((e) => {
++    //     offset.value = e.x;
++    //   })
++    //   .onEnd(() => {
++    //     // no swipe
++    //     if (start.value === offset.value) {
++    //       return;
++    //     }
++    //     // determine direction
++    //     const moveRight = start.value - offset.value < 0;
++    //     if (moveRight) {
++    //       runOnJS(handleSwipe)('left');
++    //     } else {
++    //       runOnJS(handleSwipe)('right');
++    //     }
++    //     offset.value = 0;
++    //   });
+     const isWeb = react_native_1.Platform.OS === 'web' || react_native_1.Platform.OS === 'android';
+     if (isWeb) {
+         return react_1.default.createElement(AnalyzerListInner, { league, teams, focusTeamIndex: focusTeamIndex, positionFocus, direction, handleTeamPress, focusPlayerId, handleSwipe, useOpenPlayerModal });
+     }
+-    return (react_1.default.createElement(react_native_gesture_handler_1.GestureDetector, { gesture: dragGesture },
+-        react_1.default.createElement(AnalyzerListInner, { league, teams, focusTeamIndex: focusTeamIndex, positionFocus, direction, handleTeamPress, focusPlayerId, handleSwipe, useOpenPlayerModal })));
++    return (
++    // <GestureDetector gesture={dragGesture}>
++    react_1.default.createElement(AnalyzerListInner, { league, teams, focusTeamIndex: focusTeamIndex, positionFocus, direction, handleTeamPress, focusPlayerId, handleSwipe, useOpenPlayerModal })
++    // </GestureDetector>
++    );
+ }
+ exports.default = AnalyzerList;
+ function AnalyzerListInner({ league, teams, focusTeamIndex, positionFocus, direction, handleTeamPress, focusPlayerId, handleSwipe, useOpenPlayerModal }) {
+diff --git a/node_modules/@ctrlshiftbryan/nerd-core-rn/build/components/nerd/NerdBlockLoader.js b/node_modules/@ctrlshiftbryan/nerd-core-rn/build/components/nerd/NerdBlockLoader.js
+index 335850d..98f038d 100644
+--- a/node_modules/@ctrlshiftbryan/nerd-core-rn/build/components/nerd/NerdBlockLoader.js
++++ b/node_modules/@ctrlshiftbryan/nerd-core-rn/build/components/nerd/NerdBlockLoader.js
+@@ -27,7 +27,7 @@ exports.Block = exports.DefaultNerdLoader = void 0;
+ const nerd_types_1 = require("@ctrlshiftbryan/nerd-types");
+ const react_1 = __importStar(require("react"));
+ const react_native_1 = require("react-native");
+-const react_native_reanimated_1 = __importStar(require("react-native-reanimated"));
++// import Animated, { useAnimatedStyle, withDelay, withRepeat, withSequence, withTiming } from 'react-native-reanimated';
+ const styles_1 = require("../styles");
+ function DefaultNerdLoader() {
+     return react_1.default.createElement(NerdBlockLoader, { blocksCount: 30, color: "core_red", bgColor: "white", width: 5, height: 5, spacerWidth: 5, speed: 1000 });
+@@ -46,24 +46,34 @@ function NerdBlockLoader({ blocksCount, width, height, spacerWidth, color, bgCol
+ exports.default = NerdBlockLoader;
+ const Block = ({ speed, count, position, width, height, color, bgColor }) => {
+     const delay = (speed * 2) / count;
+-    const animatedStyle = (0, react_native_reanimated_1.useAnimatedStyle)(() => ({
+-        opacity: (0, react_native_reanimated_1.withSequence)(
+-        // this is so the first animation starts immediately
+-        (0, react_native_reanimated_1.withDelay)(delay * position, (0, react_native_reanimated_1.withSequence)((0, react_native_reanimated_1.withTiming)(0, { duration: (1) }), (0, react_native_reanimated_1.withTiming)(1, { duration: (1) }))), (0, react_native_reanimated_1.withDelay)(delay * position, (0, react_native_reanimated_1.withRepeat)(
+-        // giving the first timing a duration of 1200ms and the second one 1000ms gives a wave effect
+-        (0, react_native_reanimated_1.withSequence)((0, react_native_reanimated_1.withTiming)(0, { duration: (speed * 1.2) }), (0, react_native_reanimated_1.withTiming)(1, { duration: (speed * 1) })), 
+-        // "-1" => the loop is infinite
+-        -1, 
+-        // "true" => when the animation has ended, it is triggered backwards
+-        true))),
+-    }));
++    // const animatedStyle = useAnimatedStyle(() => ({
++    //   opacity:
++    //     withSequence(
++    //       // this is so the first animation starts immediately
++    //       withDelay(
++    //         delay * position,
++    //         withSequence(withTiming(0, { duration: (1) }), withTiming(1, { duration: (1) })),
++    //       ),
++    //       withDelay(
++    //         delay * position,
++    //         withRepeat(
++    //           // giving the first timing a duration of 1200ms and the second one 1000ms gives a wave effect
++    //           withSequence(withTiming(0, { duration: (speed * 1.2) }), withTiming(1, { duration: (speed * 1) })),
++    //           // "-1" => the loop is infinite
++    //           -1,
++    //           // "true" => when the animation has ended, it is triggered backwards
++    //           true,
++    //         ),
++    //       ),
++    //     ),
++    // }));
+     return (react_1.default.createElement(react_native_1.View, null,
+         react_1.default.createElement(react_native_1.View, { style: {
+                 backgroundColor: nerd_types_1.colorCodes[bgColor],
+                 width,
+                 height,
+             } }),
+-        react_1.default.createElement(react_native_reanimated_1.default.View, { style: [animatedStyle, {
++        react_1.default.createElement(react_native_1.View, { style: [{
+                     backgroundColor: nerd_types_1.colorCodes[color],
+                     width,
+                     height,
+diff --git a/node_modules/@ctrlshiftbryan/nerd-core-rn/build/components/sleeperMini/SleeperMiniApp.js b/node_modules/@ctrlshiftbryan/nerd-core-rn/build/components/sleeperMini/SleeperMiniApp.js
+index 3f6baa3..6a04db1 100644
+--- a/node_modules/@ctrlshiftbryan/nerd-core-rn/build/components/sleeperMini/SleeperMiniApp.js
++++ b/node_modules/@ctrlshiftbryan/nerd-core-rn/build/components/sleeperMini/SleeperMiniApp.js
+@@ -27,7 +27,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
+ };
+ Object.defineProperty(exports, "__esModule", { value: true });
+ const nerd_types_1 = require("@ctrlshiftbryan/nerd-types");
+-const react_query_1 = require("@tanstack/react-query");
++const react_query_1 = require("react-query");
+ const react_1 = __importStar(require("react"));
+ const react_native_1 = require("react-native");
+ const NerdText_1 = __importDefault(require("../nerd/NerdText"));

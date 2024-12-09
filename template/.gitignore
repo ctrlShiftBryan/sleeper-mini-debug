@@ -61,3 +61,4 @@ buck-out/
 
 # Generated
 mini_packages.json
+.yalc
